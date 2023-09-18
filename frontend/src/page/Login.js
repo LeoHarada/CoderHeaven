@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import UserIcon from "../assets/profileIcon.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -9,6 +11,7 @@ const Login = () => {
         email: "",
         password: "",
     });
+    const navigate = useNavigate();
 
     const handleShowPassword = () => {
         setShowPassword((prev) => !prev);
@@ -21,11 +24,31 @@ const Login = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const { email, password } = data;
         if (email && password) {
-            alert("Logged-in successfully!");
+            const fetchData = await fetch(
+                `${process.env.REACT_APP_SERVER_DOMAIN}/login`,
+                {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                }
+            );
+            const dataRes = await fetchData.json();
+            console.log(dataRes);
+            toast(dataRes.message);
+
+            if (dataRes.alert) {
+                setTimeout(() => {
+                    navigate("/");
+                }, 1000);
+            } else {
+                alert("Please enter the required fields.");
+            }
         } else {
             alert("Username and/or Password are incorrect.");
         }
