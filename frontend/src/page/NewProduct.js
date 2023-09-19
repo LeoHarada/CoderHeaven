@@ -51,6 +51,16 @@ const NewProduct = () => {
             const fetchRes = await fetchData.json();
             console.log(fetchRes);
             toast(fetchRes.message);
+
+            setData(() => {
+                return {
+                    name: "",
+                    category: "",
+                    image: "",
+                    price: "",
+                    description: "",
+                };
+            });
         } else {
             toast("Enter the required fields.");
         }
@@ -68,6 +78,7 @@ const NewProduct = () => {
                     name="name"
                     className="bg-slate-200 p-1 my-1"
                     onChange={handleOnChange}
+                    value={data.name}
                 />
 
                 <label htmlFor="category">Category</label>
@@ -76,6 +87,7 @@ const NewProduct = () => {
                     id="category"
                     name="category"
                     onChange={handleOnChange}
+                    value={data.category}
                 >
                     <option value={"other"}>select category</option>
                     <option value={"chairs"}>Chairs</option>
@@ -84,6 +96,7 @@ const NewProduct = () => {
                     <option value={"headphones"}>Headphones</option>
                     <option value={"humidifiers"}>Humidifiers</option>
                     <option value={"keyboards"}>Keyboards</option>
+                    <option value={"lamps"}>Lamps</option>
                     <option value={"microphones"}>Microphones</option>
                     <option value={"monitors"}>Monitors</option>
                     <option value={"mouses"}>Mouses</option>
@@ -123,16 +136,18 @@ const NewProduct = () => {
                     className="bg-slate-200 p-1 my-1"
                     name="price"
                     onChange={handleOnChange}
+                    value={data.price}
                 />
 
                 <label htmlFor="description" className="my-1">
                     Description
                 </label>
                 <textarea
-                    rows={3}
+                    rows={2}
                     className="bg-slate-200 p-1 my-1 resize-none"
                     name="description"
                     onChange={handleOnChange}
+                    value={data.description}
                 />
 
                 <button className="bg-red-500 hover:bg-red-600 text-white text-lg font-medium my-2 drop-shadow">

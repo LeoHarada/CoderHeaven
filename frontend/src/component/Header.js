@@ -22,6 +22,8 @@ const Header = () => {
         toast("Logged out successfully.");
     };
 
+    console.log(prcoess.env.REACT_APP_ADMIN_EMAIL);
+
     return (
         <header className="fixed shadow-md w-full h-16 px-2 md:px-4 z-50 bg-white">
             {/* desktop */}
