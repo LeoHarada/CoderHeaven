@@ -82,7 +82,7 @@ const Home = () => {
                         : loadingArray.map((product, index) => {
                               return (
                                   <HomeCard
-                                      key={index}
+                                      key={index + "loading"}
                                       loading={"Loading..."}
                                   />
                               );
@@ -117,7 +117,7 @@ const Home = () => {
                         ? homeProductCardListFeatured.map((product) => {
                               return (
                                   <CardFeature
-                                      key={product._id}
+                                      key={product._id + "homeproducts"}
                                       id={product._id}
                                       name={product.name}
                                       category={product.category}
@@ -126,8 +126,11 @@ const Home = () => {
                                   />
                               );
                           })
-                        : loadingArrayFeature.map((product) => (
-                              <CardFeature loading="Loading..." />
+                        : loadingArrayFeature.map((product, index) => (
+                              <CardFeature
+                                  loading="Loading..."
+                                  key={index + "cartLoading"}
+                              />
                           ))}
                 </div>
             </div>
