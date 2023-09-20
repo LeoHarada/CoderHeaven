@@ -1,9 +1,9 @@
-import React, { useEffect, useInsertionEffect } from "react";
+import React, { useRef } from "react";
 import HomeCard from "../component/HomeCard";
 import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import FilteredProducts from "../component/FilteredProducts";
+import AllProduct from "../component/AllProduct";
 
 const Home = () => {
     const productData = useSelector((state) => state.product.productList);
@@ -22,26 +22,6 @@ const Home = () => {
 
     const prevProduct = () => {};
     slideProductRef.current.scrollLeft -= 200;
-
-    const categoryList = [
-        ...new Set(productData.map((product) => product.category)),
-    ];
-
-    const [dataFilter, setDataFilter] = useState([]);
-
-    useInsertionEffect(() => {
-        setDataFilter(productData);
-    }, [productData]);
-
-    const handleFilteredProducts = (category) => {
-        const filter = productData.filter(
-            (product) =>
-                product.category.toLowerCase() === category.toLowerCase()
-        );
-        setDataFilter(() => {
-            return [...filter];
-        });
-    };
 
     return (
         <div className="p-2 md:p-4">
@@ -91,6 +71,7 @@ const Home = () => {
                               return (
                                   <HomeCard
                                       key={product._id}
+                                      id={product._id}
                                       image={product.image}
                                       name={product.name}
                                       price={product.price}
@@ -137,6 +118,7 @@ const Home = () => {
                               return (
                                   <CardFeature
                                       key={product._id}
+                                      id={product._id}
                                       name={product.name}
                                       category={product.category}
                                       price={product.price}
@@ -149,38 +131,7 @@ const Home = () => {
                           ))}
                 </div>
             </div>
-
-            <div className="my-5">
-                <h2 className="font-bold text-2xl text-slate-800 mb-4">
-                    Your Product
-                </h2>
-                <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
-                    {categoryList[0] &&
-                        categoryList.map((product) => {
-                            return (
-                                <FilteredProducts
-                                    category={product}
-                                    onClick={() =>
-                                        handleFilteredProducts(product)
-                                    }
-                                />
-                            );
-                        })}
-                </div>
-                <div className="flex flex-wrap justify-center gap-4 my-4">
-                    {dataFilter.map((product) => {
-                        return (
-                            <CardFeature
-                                key={product._id}
-                                name={product.name}
-                                category={product.category}
-                                price={product.price}
-                                image={product.image}
-                            />
-                        );
-                    })}
-                </div>
-            </div>
+            <AllProduct header={"All Products"} />
         </div>
     );
 };
