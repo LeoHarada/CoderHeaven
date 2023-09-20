@@ -35,8 +35,6 @@ const SignUp = () => {
 
     const handleUploadProfileImage = async (e) => {
         const data = await ImagetoBase64(e.target.files[0]);
-        console.log(data);
-
         setData((prev) => {
             return {
                 ...prev,
@@ -45,7 +43,6 @@ const SignUp = () => {
         });
     };
 
-    console.log(process.env.REACT_APP_SERVER_DOMAIN);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { firstName, email, password, confirmPassword } = data;

@@ -24,7 +24,6 @@ const NewProduct = () => {
 
     const uploadImage = async (e) => {
         const data = await ImagetoBase64(e.target.files[0]);
-        console.log(data);
         setData((prev) => {
             return {
                 ...prev,
@@ -49,7 +48,6 @@ const NewProduct = () => {
                 }
             );
             const fetchRes = await fetchData.json();
-            console.log(fetchRes);
             toast(fetchRes.message);
 
             setData(() => {
