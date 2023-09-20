@@ -14,10 +14,7 @@ const Login = () => {
         password: "",
     });
     const navigate = useNavigate();
-
     const userData = useSelector((state) => state);
-    console.log(userData);
-
     const dispatch = useDispatch();
 
     const handleShowPassword = () => {
@@ -46,19 +43,16 @@ const Login = () => {
                 }
             );
             const dataRes = await fetchData.json();
-            console.log(dataRes);
-            toast(userData.user.firstName + dataRes.message);
+            toast(dataRes.message);
 
             if (dataRes.alert) {
                 dispatch(loginRedux(dataRes));
                 setTimeout(() => {
                     navigate("/");
                 }, 1000);
-            } else {
-                alert("Please enter the required fields.");
             }
         } else {
-            alert("Username and/or Password are incorrect.");
+            alert("Please enter the required fields.");
         }
     };
 

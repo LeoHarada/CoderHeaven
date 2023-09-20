@@ -10,7 +10,6 @@ import { toast } from "react-hot-toast";
 const Header = () => {
     const [showMenu, setShowMenu] = useState(false);
     const userData = useSelector((state) => state.user);
-    console.log(userData);
     const dispatch = useDispatch();
 
     const handleShowMenu = () => {
@@ -72,15 +71,20 @@ const Header = () => {
                                         New Product
                                     </Link>
                                 )}
-                                {userData.image ? (
+                                {userData.firstName ? (
                                     <p
                                         className="cursor-pointer text-white px-2 bg-red-500"
                                         onClick={handleLogout}
                                     >
-                                        Logout ({userData.firstName})
+                                        Logout ({userData.firstName}){" "}
                                     </p>
                                 ) : (
-                                    <Link to={"login"}>Login</Link>
+                                    <Link
+                                        to={"login"}
+                                        className="whitespace-nowrap cursor-pointer px-2"
+                                    >
+                                        Login
+                                    </Link>
                                 )}
                                 <nav className="text-base md:text-lg flex flex-col md:hidden">
                                     <Link to={""} className="px-2 py-1">

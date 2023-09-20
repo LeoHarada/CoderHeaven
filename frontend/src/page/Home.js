@@ -20,8 +20,9 @@ const Home = () => {
         slideProductRef.current.scrollLeft += 200;
     };
 
-    const prevProduct = () => {};
-    slideProductRef.current.scrollLeft -= 200;
+    const prevProduct = () => {
+        slideProductRef.current.scrollLeft -= 200;
+    };
 
     return (
         <div className="p-2 md:p-4">
@@ -95,12 +96,12 @@ const Home = () => {
                         Featured Products
                     </h2>
                     <div className="ml-auto flex gap-4">
-                        <buton
+                        <button
                             onClick={prevProduct}
                             className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"
                         >
                             <GrPrevious />
-                        </buton>
+                        </button>
                         <button
                             onClick={nextProduct}
                             className="bg-slate-300 hover:bg-slate-400 text-lg p-1 rounded"

@@ -39,6 +39,7 @@ export const productSlice = createSlice({
             const index = state.cartItem.findIndex(
                 (product) => product._id === action.payload
             );
+            let qty = state.cartItem[index].qty;
             let qtyInc = ++qty;
             state.cartItem[index].qty = qtyInc;
             const price = state.cartItem[index].price;

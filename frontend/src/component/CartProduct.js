@@ -57,10 +57,6 @@ const CartProduct = ({ id, name, image, category, qty, total, price }) => {
                         </p>
                     </div>
                 </div>
-                <div>
-                    <p className="text-slate-600 font-medium">Description : </p>
-                    <p>{description}</p>
-                </div>
             </div>
         </div>
     );

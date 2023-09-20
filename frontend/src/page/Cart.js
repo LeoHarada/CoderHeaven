@@ -1,6 +1,7 @@
 import React from "react";
 import CartProduct from "../component/CartProduct";
 import emptyCartImage from "../assets/empty.gif";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
     const productCartItem = useSelector((state) => state.product.cartItem);

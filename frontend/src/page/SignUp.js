@@ -62,8 +62,6 @@ const SignUp = () => {
                     }
                 );
                 const dataRes = await fetchData.json();
-                console.log(dataRes);
-                // alert("Successful!");
                 toast(dataRes.message);
                 if (dataRes.alert) {
                     navigate("/login");
@@ -145,7 +143,7 @@ const SignUp = () => {
                             onChange={handleOnChange}
                         />
                         <span
-                            className="flex text-xl"
+                            className="flex text-xl cursor-pointer"
                             onClick={handleShowPassword}
                         >
                             {showPassword ? <BiShow /> : <BiHide />}
@@ -156,14 +154,14 @@ const SignUp = () => {
                     <div className="flex bg-slate-200 px-2 py-1 rounded mt-1 mb-2 focus-within:outline focus-within:outline-blue-300">
                         <input
                             type={showConfirmPassword ? "text" : "password"}
-                            id="confirmpassword"
-                            name="confirmpassword"
+                            id="confirmPassword"
+                            name="confirmPassword"
                             className="w-full bg-slate-200 border-none outline-none"
                             value={data.confirmPassword}
                             onChange={handleOnChange}
                         />
                         <span
-                            className="flex text-xl"
+                            className="flex text-xl cursor-pointer"
                             onClick={handleShowConfirmPassword}
                         >
                             {showConfirmPassword ? <BiShow /> : <BiHide />}
