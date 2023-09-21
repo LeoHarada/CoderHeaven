@@ -3,8 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const Stripe = require("stripe");
-
 const app = express();
+
 app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
@@ -116,14 +116,13 @@ app.get("/product", async (req, res) => {
 });
 
 //payment gateway
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.REACT_APP_STRIPE_SECRET_KEY);
 
-app.post("/checkout-payment", async (req, res) => {
+app.post("/create-checkout-session", async (req, res) => {
     try {
         const params = {
             submit_type: "pay",
             mode: "payment",
-            payment_method_types: ["card"],
             billing_address_collection: "auto",
             shipping_options: [
                 { shipping_rate: "shr_1NsVPTBdnZ7zmfg4WKlwzmaH" },

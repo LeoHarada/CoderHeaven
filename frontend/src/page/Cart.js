@@ -23,10 +23,10 @@ const Cart = () => {
     const handlePayment = async () => {
         if (user.email) {
             const stripePromise = await loadStripe(
-                process.env.STRIPE_PUBLIC_KEY
+                `${process.env.REACT_APP_STRIPE_PUBLIC_KEY}`
             );
             const res = await fetch(
-                `${process.env.REACT_APP_SERVER_DOMAIN}/checkout-payment`,
+                `${process.env.REACT_APP_SERVER_DOMAIN}/create-checkout-session`,
                 {
                     method: "POST",
                     headers: {
