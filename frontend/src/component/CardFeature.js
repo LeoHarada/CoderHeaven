@@ -17,11 +17,11 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
         );
     };
     return (
-        <div className="w-full min-w-[200px] max-w-[200px] bg-white drop-shadow-lg hover:shadow-lg cursor-pointer py-5 px-4 flex flex-col">
+        <div className="w-full mb-4 min-w-[200px] max-w-[200px] bg-white drop-shadow-lg hover:shadow-lg cursor-pointer py-5 px-4 flex flex-col">
             {image ? (
                 <>
                     <Link
-                        to={`/menu/${id}`}
+                        to={`/products/${id}`}
                         onClick={() =>
                             window.scrollTo({ top: "0", behavior: "smooth" })
                         }
@@ -39,7 +39,7 @@ const CardFeature = ({ image, name, price, category, loading, id }) => {
                         </p>
                     </Link>
                     <button
-                        className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 w-full"
+                        className="bg-red-500 text-white font-bold py-1 mt-2 rounded hover:bg-white hover:text-red-500 w-full"
                         onClick={handleAddCartProduct}
                     >
                         Add to Cart

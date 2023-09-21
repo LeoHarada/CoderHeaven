@@ -4,14 +4,18 @@ import { useSelector } from "react-redux";
 import CardFeature from "../component/CardFeature";
 import { GrPrevious, GrNext } from "react-icons/gr";
 import AllProduct from "../component/AllProduct";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const productData = useSelector((state) => state.product.productList);
-    const homeProductCardList = productData.slice(0, 4);
-    const homeProductCardListFeatured = productData.filter(
-        (product) => product.category === "monitors",
-        []
-    );
+    const navigate = useNavigate();
+
+    const copiedProductData = [...productData];
+    const shuffledProducts = copiedProductData.sort(() => Math.random() - 0.5);
+    const homeProductCardList = shuffledProducts.slice(0, 6);
+
+    const homeProductCardListFeatured = shuffledProducts.slice(0, 15);
+
     const loadingArray = new Array(4).fill(null);
     const loadingArrayFeature = new Array(10).fill(null);
     const slideProductRef = useRef();
@@ -24,46 +28,49 @@ const Home = () => {
         slideProductRef.current.scrollLeft -= 200;
     };
 
+    const startShopping = () => {
+        navigate("/products");
+    };
+
     return (
-        <div className="p-2 md:p-4">
+        <div className="p-2 mt-7 md:p-4">
             <div className="md:flex gap-4 py-2">
                 <div className="md:w-1/2">
                     <div className="flex gap-3 bg-slate-300 w-36 px-2 items-center rounded-full">
                         <p className="text-sm font-medium text-slate-900">
-                            Bike Delivery
+                            Fast Delivery
                         </p>
                         <img
-                            src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
+                            src="https://cdn-icons-png.flaticon.com/512/726/726455.png"
                             className="h-7"
                         />
                     </div>
                     <h2 className="text-4xl md:text-7xl font-bold py-3">
-                        The fasted Delivery in
-                        <span className="text-red-600 text-"> Your Home</span>
+                        The fastest Delivery to
+                        <span className="text-red-500 text-"> Your Home</span>
                     </h2>
                     <p className="py-3 text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Volutpat ac tincidunt vitae semper quis
-                        lectus. Suspendisse interdum consectetur libero id
-                        faucibus nisl tincidunt eget. Tortor pretium viverra
-                        suspendisse potenti nullam ac tortor vitae. In vitae
-                        turpis massa sed. Interdum varius sit amet mattis
-                        vulputate enim. Vel orci porta non pulvinar neque
-                        laoreet suspendisse interdum consectetur. Donec ac odio
-                        tempor orci dapibus ultrices in. Ut ornare lectus sit
-                        amet est placerat in egestas. Quam pellentesque nec nam
-                        aliquam sem et tortor consequat id. Vitae elementum
-                        curabitur vitae nunc sed velit dignissim sodales.
-                        Ultrices sagittis orci a scelerisque purus semper eget
-                        duis at. Nisi est sit amet facilisis magna etiam tempor
-                        orci. Egestas integer eget aliquet nibh praesent
-                        tristique magna. Tempor orci eu lobortis elementum nibh.
-                        Eleifend donec pretium vulputate sapien. Gravida arcu ac
-                        tortor dignissim convallis.
+                        Welcome to our one-stop destination for web developer
+                        accessories! Discover the perfect gear to enhance your
+                        coding experience, whether you're a seasoned programmer
+                        or just starting your journey in web development.
+                        Explore a wide range of essentials like high-quality
+                        headphones for immersive coding sessions, responsive
+                        keyboards that amplify your typing speed, crystal-clear
+                        monitors for optimal display, ergonomic mice for precise
+                        navigation, and webcams for seamless virtual meetings.
+                        Our curated selection of accessories is designed to
+                        elevate your productivity and provide the tools you need
+                        to excel in your web development endeavors. Browse our
+                        collection and equip yourself with the best tech gear to
+                        make coding both efficient and enjoyable. Start shopping
+                        today and elevate your web development game!
                     </p>
-                    <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounderd-md">
-                        Order Now
+                    <button
+                        className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md hover:bg-white hover:text-red-500 mt-4"
+                        onClick={startShopping}
+                    >
+                        Start Shopping
                     </button>
                 </div>
                 <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
@@ -92,7 +99,7 @@ const Home = () => {
             </div>
             <div className="">
                 <div className="flex w-full items-center">
-                    <h2 className="font-bold text-2xl text-slate-800 mb-4">
+                    <h2 className="font-bold text-2xl text-slate-800 mb-4 mt-10">
                         Featured Products
                     </h2>
                     <div className="ml-auto flex gap-4">
@@ -135,7 +142,10 @@ const Home = () => {
                           ))}
                 </div>
             </div>
-            <AllProduct header={"All Products"} />
+            <h2 className="font-bold text-2xl text-slate-800 mt-10 flex justify-center">
+                All Products
+            </h2>
+            <AllProduct />
         </div>
     );
 };

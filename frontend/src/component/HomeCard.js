@@ -3,14 +3,18 @@ import { Link } from "react-router-dom";
 
 const HomeCard = ({ name, image, price, category, loading, id }) => {
     return (
-        <div className="bg-white shadow-md p-2 rounded min-w-[150px]">
+        <div className="bg-white shadow-md p-2 rounded min-w-[150px] drop-shadow-lg hover:shadow-lg">
             {name ? (
                 <>
                     <Link
-                        to={`/menu/${id}`}
+                        to={`/products/${id}`}
                         onClick={() =>
-                            window.scrollTo({ top: "0", behavior: "smooth" })
+                            window.scrollTo({
+                                top: "0",
+                                behavior: "smooth",
+                            })
                         }
+                        className="flex flex-col justify-center items-center"
                     >
                         <div className="w-40 min-h-[150px]">
                             <img src={image} className="h-full w-full" />

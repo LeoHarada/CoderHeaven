@@ -10,7 +10,7 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import About from "./page/About";
-import Menu from "./page/Menu";
+import Products from "./page/Products";
 import Contact from "./page/Contact";
 import Home from "./page/Home";
 import Login from "./page/Login";
@@ -21,13 +21,14 @@ import { Provider } from "react-redux";
 import Cart from "./page/Cart";
 import Success from "./page/Success";
 import Cancel from "./page/Cancel";
+import AllProduct from "./component/AllProduct";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path="/" element={<App />}>
             <Route index element={<Home />} />
-            {/* <Route path="menu" element={<Menu />} /> */}
-            <Route path="menu/:filterBy" element={<Menu />} />
+            <Route path="products" element={<AllProduct />} />
+            <Route path="products/:filterBy" element={<Products />} />
             <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="login" element={<Login />} />

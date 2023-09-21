@@ -3,7 +3,7 @@ import FilteredProducts from "./FilteredProducts";
 import CardFeature from "./CardFeature";
 import { useSelector } from "react-redux";
 
-const AllProduct = ({ heading }) => {
+const AllProduct = () => {
     const productData = useSelector((state) => state.product.productList);
     const categoryList = [
         ...new Set(productData.map((product) => product.category)),
@@ -29,11 +29,8 @@ const AllProduct = ({ heading }) => {
     const loadingArrayFeature = new Array(10).fill(null);
 
     return (
-        <div className="my-5">
-            <h2 className="font-bold text-2xl text-slate-800 mb-4">
-                {heading}
-            </h2>
-            <div className="flex gap-4 justify-center overflow-scroll scrollbar-none">
+        <div className="my-10">
+            <div className="flex md:flex-wrap gap-4 md:justify-center overflow-scroll scrollbar-none">
                 {categoryList[0] ? (
                     categoryList.map((product) => {
                         return (

@@ -4,9 +4,9 @@ import AllProduct from "../component/AllProduct";
 import { useSelector, useDispatch } from "react-redux";
 import { addCartItem } from "../redux/productSlice";
 
-const Menu = () => {
+const Products = () => {
     const { filterBy } = useParams();
-    const navigate = useDispatch();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const productData = useSelector((state) => state.product.productList);
     const productDisplay = productData.filter(
@@ -23,15 +23,15 @@ const Menu = () => {
     };
 
     return (
-        <div className="p-2 md:p-4">
-            <div className="w-full max-w-4xl m-auto md:flex bg-white">
-                <div className="max-w-sm overflow-hidden w-full p-5">
+        <div className="p-2 mt-10 md:p-4">
+            <div className="w-full max-w-4xl flex flex-col items-center m-auto bg-white">
+                <div className="overflow-hidden p-5">
                     <img
                         src={productDisplay.image}
-                        className="hover:scale-105 transition-all h-full"
+                        className="hover:scale-105 transition-all h-full w-full max-w-lg flex justify-center items-center"
                     />
                 </div>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col items-center gap-1">
                     <h3 className="font-semibold text-slate-600 capitalize text-2xl md:text-4xl">
                         {productDisplay.name}
                     </h3>
@@ -45,19 +45,19 @@ const Menu = () => {
                     <div className="flex gap-3">
                         <button
                             onClick={handleBuy}
-                            className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]"
+                            className="bg-red-500 text-white font-bold py-1 mt-2 rounded hover:bg-white min-w-[100px]"
                         >
                             Buy
                         </button>
                         <button
                             onClick={handleAddCartProduct}
-                            className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]"
+                            className="bg-red-500 text-white font-bold py-1 mt-2 rounded hover:bg-white min-w-[100px]"
                         >
                             Add to Cart
                         </button>
                     </div>
-                    <div>
-                        <p className="text-slate-600 font-medium">
+                    <div className="flex flex-col mt-5">
+                        <p className="text-slate-600 font-bold">
                             Description :{" "}
                         </p>
                         <p>{productDisplay.description}</p>
@@ -69,4 +69,4 @@ const Menu = () => {
     );
 };
 
-export default Menu;
+export default Products;
