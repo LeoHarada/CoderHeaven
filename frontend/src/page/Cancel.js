@@ -1,9 +1,13 @@
 import React from "react";
+import cancelled from "../assets/cancelled.gif";
 
 const Cancel = () => {
     return (
-        <div className="bg-green-200 w-full max-w-md m-auto h-36 flex justify-center items-center font-semibold text-lg">
-            <p>Payment was cancelled!</p>
+        <div className="mt-10 flex flex-col w-full justify-center items-center">
+            <img src={cancelled} className="w-full max-w-sm" />
+            <p className="text-slate-500 text-3xl font-bold mt-5">
+                Payment was cancelled!
+            </p>
         </div>
     );
 };

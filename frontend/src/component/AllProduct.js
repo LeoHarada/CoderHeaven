@@ -29,7 +29,7 @@ const AllProduct = () => {
     const loadingArrayFeature = new Array(10).fill(null);
 
     return (
-        <div className="my-10">
+        <div className="mt-10">
             <div className="flex md:flex-wrap gap-4 md:justify-center overflow-scroll scrollbar-none">
                 {categoryList[0] ? (
                     categoryList.map((product) => {
@@ -51,7 +51,7 @@ const AllProduct = () => {
                     </div>
                 )}
             </div>
-            <div className="flex flex-wrap justify-center gap-4 my-4">
+            <div className="flex flex-wrap justify-center gap-4 mt-8">
                 {dataFilter[0]
                     ? dataFilter.map((product) => {
                           return (

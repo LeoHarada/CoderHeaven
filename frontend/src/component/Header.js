@@ -81,7 +81,7 @@ const Header = () => {
                                 )}
                                 {userData.firstName ? (
                                     <p
-                                        className="cursor-pointer text-white px-2 bg-red-500 hover:bg-purple-600"
+                                        className="cursor-pointer font-semibold text-white px-2 bg-red-500 hover:bg-purple-600 rounded-sm"
                                         onClick={handleLogout}
                                     >
                                         Logout ({userData.firstName}){" "}

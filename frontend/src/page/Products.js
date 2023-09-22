@@ -56,7 +56,7 @@ const Products = () => {
                             Add to Cart
                         </button>
                     </div>
-                    <div className="flex flex-col mt-5">
+                    <div className="flex flex-col p-4">
                         <p className="text-slate-600 font-bold">
                             Description :{" "}
                         </p>
