@@ -30,7 +30,7 @@ Welcome to our one-stop destination for web developer accessories! Discover the 
   <b>Home page</b>
 </p>
 <p align="center">
-  <img src="https://github.com/LeoHarada/CoderHeaven/assets/86167421/760b669a-f38b-4227-9210-7a0a0788e807">
+  <img src="https://github.com/LeoHarada/CoderHeaven/assets/86167421/c464af21-179d-42e5-9be1-af794ff2c10b">
 </p>
 
 <p align="center">
